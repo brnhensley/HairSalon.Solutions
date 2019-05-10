@@ -25,14 +25,14 @@ This is a rad program that will allow a hair salon to add and view data about th
 * _Navigate the terminal to the HairSalon directory and enter $ dotnet run_
 * _Open browser to localhost:5000 to use the app_
 
-
-
 ## _Specs_
 
 |Objectives|example input|example output|
 |-|-|-|
-
-<!-- DO THIS -->
+|Create a new stylist|"Larry"|"Larry" added to stylists database table|
+|Create a new client|"Curly"|"Curly" added to clients database table|
+|View a list of all stylists|Click 'View All Stylists'|Page opens with a list of all stylists|
+|View a specific stylist|Click a stylist's name from a list|Page opens with that stylist's information and clients|
 
 ## _Known Bugs_
 
