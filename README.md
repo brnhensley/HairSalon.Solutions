@@ -1,0 +1,2 @@
+Stylist = cuisine
+Client = restaurant
