@@ -1,7 +1,8 @@
+<!--
 Stylist = cuisine = category
 
 Client = restaurant = item
-
+ -->
 # _Hair Salon_
 
 #### _A Hair Salon Web App, 5-10-19_

@@ -6,7 +6,7 @@ namespace HairSalon.Controllers
 {
   public class ClientController : Controller
   {
-
+                          //  THESE ROUTS NEED CHANGED TO BE WITHIN THE STYLISTS routes
     [HttpGet("/clients")]
     public ActionResult Index()
     {
