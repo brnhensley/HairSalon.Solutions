@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BestRestaurantDatabase
+namespace HairSalonDatabase
 {
   public class Startup
   {
@@ -36,13 +36,13 @@ namespace BestRestaurantDatabase
 
       app.Run(async (context) =>
       {
-        await context.Response.WriteAsync("Hello Restaurant!");
+        await context.Response.WriteAsync("Hello Bad Ass!");
       });
 
     }
   }
   public static class DBConfiguration
  {
-   public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=brian_hensley∑;default command timeout=50;";
+   public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=brian_hensley;default command timeout=50;";
  }
 }

@@ -1,2 +1,3 @@
-Stylist = cuisine
-Client = restaurant
+Stylist = cuisine = category
+
+Client = restaurant = item
