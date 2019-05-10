@@ -1,6 +1,6 @@
 using System;
 using MySql.Data.MySqlClient;
-using HairSalonDatabase;
+using HairSalon;
 using System.Collections.Generic;
 
 namespace HairSalon.Models

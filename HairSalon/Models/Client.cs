@@ -29,7 +29,7 @@ namespace HairSalon.Models
       while(rdr.Read())
       {
         string name = rdr.GetString(1);
-        int stylistId = rdr. GetInt32(2)
+        int stylistId = rdr. GetInt32(2);
         int id = rdr.GetInt32(0);
 
         Client newClient = new Client(name, stylistId, id);
@@ -143,11 +143,11 @@ namespace HairSalon.Models
       {
         Client newClient = (Client) otherClient;
         bool nameEquality = (this.Name == newClient.Name);
-        bool stylistIdEquality = (this.StylistId == newRestaurant.StylistId);
+        bool stylistIdEquality = (this.StylistId == newClient.StylistId);
         bool idEquality = (this.Id == newClient.Id);
-        return (nameEquality && idEquality);
+        return (nameEquality && stylistIdEquality && idEquality);
       }
     }
-    
+
   }
 }

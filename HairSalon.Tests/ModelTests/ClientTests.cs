@@ -1,7 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HairSalon.Models;
-using HairSalonDatabase;
+//using HairSalonDatabase;
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 using System;
 
 namespace HairSalon.Tests
@@ -38,9 +39,9 @@ namespace HairSalon.Tests
     public void GetAll_ReturnsClients_ClientList()
     {
       //Arrange
-      Client newClient1 = new Client("Cerebus");
+      Client newClient1 = new Client("Cerebus", 1);
       newClient1.Save();
-      Client newClient2 = new Client("Baal");
+      Client newClient2 = new Client("Baal", 1);
       newClient2.Save();
       List<Client> expectedResult = new List<Client> { newClient1, newClient2 };
 
@@ -55,8 +56,8 @@ namespace HairSalon.Tests
     public void Equals_ReturnsTrueIfNameAreTheSame_Client()
     {
       // Arrange, Act
-      Client firstClient = new Client("Baal");
-      Client secondClient = new Client("Baal");
+      Client firstClient = new Client("Baal", 2);
+      Client secondClient = new Client("Baal", 2);
 
       // Assert
       Assert.AreEqual(firstClient, secondClient);
@@ -66,7 +67,7 @@ namespace HairSalon.Tests
     public void Save_SavesToDatabase_ClientList()
     {
       //Arrange
-      Client testClient = new Client("Baal");
+      Client testClient = new Client("Baal", 2);
       testClient.Save();
 
       //Act
@@ -81,7 +82,7 @@ namespace HairSalon.Tests
     public void Save_AssignsIdToObject_Id()
     {
       //Arrange
-      Client testClient = new Client("Baal");
+      Client testClient = new Client("Baal", 2);
 
       //Act
       testClient.Save();
@@ -98,7 +99,7 @@ namespace HairSalon.Tests
     public void Find_ReturnsCorrectClient_Client()
     {
       //Arrange
-      Client testClient = new Client("Baal");
+      Client testClient = new Client("Baal", 2);
       testClient.Save();
 
       //Act
