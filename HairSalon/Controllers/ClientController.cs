@@ -28,22 +28,6 @@ namespace HairSalon.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpPost("/clients/delete")]
-    public ActionResult DeleteAll()
-    {
-      Client.ClearAll();
-      return RedirectToAction("Index");
-
-    }
-
-    [HttpPost("/clients/{id}/delete")]
-    public ActionResult Delete(int id)
-    {
-      Client foundClient = Client.Find(id);
-      foundClient.DeleteClient();
-      return RedirectToAction("Index");
-      // return View();
-    }
 
     [HttpGet("/clients/{id}")]
     public ActionResult Show(int id)
@@ -53,3 +37,20 @@ namespace HairSalon.Controllers
     }
   }
 }
+
+// [HttpPost("/clients/delete")]
+// public ActionResult DeleteAll()
+// {
+//   Client.ClearAll();
+//   return RedirectToAction("Index");
+//
+// }
+//
+// [HttpPost("/clients/{id}/delete")]
+// public ActionResult Delete(int id)
+// {
+//   Client foundClient = Client.Find(id);
+//   foundClient.DeleteClient();
+//   return RedirectToAction("Index");
+//   // return View();
+// }

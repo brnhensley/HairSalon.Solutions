@@ -59,6 +59,7 @@ namespace HairSalon.Models
       }
       return allStylists;
     }
+
     public static Stylist Find(int id)
     {
       MySqlConnection conn = DB.Connection();
@@ -115,20 +116,6 @@ namespace HairSalon.Models
         conn.Dispose();
       }
       return allStylistClients;
-    }
-
-    public static void DeleteAll()
-    {
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-      var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM stylists;";
-      cmd.ExecuteNonQuery();
-      conn.Close();
-      if (conn != null)
-      {
-        conn.Dispose();
-      }
     }
 
     public static void ClearAll()
