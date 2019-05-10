@@ -5,7 +5,7 @@ using HairSalon.Models;
 
 namespace HairSalon.Controllers
 {
-  public class StylistController : Controller
+  public class StylistsController : Controller
   {
 
     [HttpGet("/stylists")]
@@ -53,15 +53,6 @@ namespace HairSalon.Controllers
         model.Add("stylist", foundStylist);
         return View("Show", model);
     }
-    // // This one creates new Clients within a given Stylist, not new Stylists:
-    // [HttpPost("/stylists/{stylistId}/items/new")]
-    // public ActionResult AddClient(int stylistId, int clientId)
-    // {
-    //   Stylist stylist = Stylist.Find(stylistId);
-    //   Client newClient = Client.Find(clientId);
-    //   stylist.AddClient(newClient);
-    //   return RedirectToAction("Show", new { id = stylistId });
-    // }
 
   }
 }
