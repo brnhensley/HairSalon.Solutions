@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HairSalon.Models;
-//using HairSalonDatabase;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System;

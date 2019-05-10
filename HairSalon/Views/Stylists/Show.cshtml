@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Best Clients</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='~/css/styles.css' type="text/css">
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Best Clients</h1>
+      <em>Here are some of the best clients:</em>
+    </div>
+    @if (Model.Count == 0)
+    {
+      <p>No clients have been added yet!</p>
+    }
+    @if(Model.Count != 0)
+    {
+      @foreach (var client in @Model["clients"])
+      {
+        <div class="list">
+          <div class="card col-md-12">
+            <div class="card-body">
+              <h5 class="card-title"><a href="/stylists/@Model["stylist"].Id/clients/@client.Id" class="btn btn-dark">@client.Name</a></h5>
+            </div>
+          </div>
+        </div>
+        <br>
+      }
+    }
+    <a href="/stylists/@Model["stylist"].Id/clients/new" class="btn btn-dark">Add a new client</a><br><br>
+    <a href="/stylists" class="btn btn-dark">Return to stylists list</a>
+    <a href="/" class="btn btn-dark">Return to homepage</a>
+  </div>
+</body>
+</html>
