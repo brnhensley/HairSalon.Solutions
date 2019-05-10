@@ -48,8 +48,8 @@ namespace HairSalon.Controllers
     [HttpGet("/clients/{id}")]
     public ActionResult Show(int id)
     {
-      Client restaurant = Client.Find(id);
-      return View(restaurant);
+      Client client = Client.Find(id);
+      return View(client);
     }
   }
 }
