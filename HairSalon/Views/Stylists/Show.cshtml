@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>Best Clients</title>
+  <title>@Model["stylist"].Name's Clients</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
   <link rel='stylesheet' href='~/css/styles.css' type="text/css">
 </head>
@@ -17,21 +17,21 @@
     }
     @if(Model.Count != 0)
     {
-      @foreach (var client in @Model["clients"])
-      {
-        <div class="list">
-          <div class="card col-md-12">
-            <div class="card-body">
-              <h5 class="card-title"><a href="/stylists/@Model["stylist"].Id/clients/@client.Id" class="btn btn-dark">@client.Name</a></h5>
-            </div>
-          </div>
-        </div>
-        <br>
-      }
+      <ul>
+        @foreach (var client in @Model["clients"])
+        {
+          <li>
+            <h4><a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.Name</a></h4>
+          </li>
+        }
+      </ul>
     }
-    <a href="/stylists/@Model["stylist"].Id/clients/new" class="btn btn-dark">Add a new client</a><br><br>
-    <a href="/stylists" class="btn btn-dark">Return to stylists list</a>
-    <a href="/" class="btn btn-dark">Return to homepage</a>
+    <br>
+    <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a>
+    <br><br>
+    <a href="/stylists"><button class="btn btn-secondary">Return to the stylists list</button></a>
+    <br><br>
+    <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
   </div>
 </body>
 </html>
