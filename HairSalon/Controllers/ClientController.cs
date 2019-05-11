@@ -13,5 +13,13 @@ namespace HairSalon.Controllers
             Stylist stylist = Stylist.Find(stylistId);
             return View(stylist);
         }
+
+        [HttpPost("/stylists")]
+        public ActionResult Create(string name, int id)
+        {
+          Stylist newStylist = new Stylist(name, id);
+          newStylist.Save();
+          return RedirectToAction("Index");
+        }
     }
 }
