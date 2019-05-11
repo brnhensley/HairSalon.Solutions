@@ -34,6 +34,8 @@ This is a rad program that will allow a hair salon to add and view data about th
 |Create a new client|"Curly"|"Curly" added to clients database table|
 |View a list of all stylists|Click 'View All Stylists'|Page opens with a list of all stylists|
 |View a specific stylist|Click a stylist's name from a list|Page opens with that stylist's information and clients|
+|View a list of all a stylist's clients|Click a stylist's name|Page opens with a list of all clients|
+|View a specific client|Click a client's name from a list|Page opens with that client's information|
 
 ## _Known Bugs_
 
