@@ -1,3 +1,11 @@
-button {
-  font-size: 300px;
+.jumbotron {
+  text-align: center;
+}
+
+body {
+  /* background-color: lightgrey; */
+}
+
+li {
+  margin-bottom: 5px;
 }

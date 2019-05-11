@@ -21,7 +21,7 @@
         @foreach (var client in @Model["clients"])
         {
           <li>
-            <h4><a href="/stylists/@Model["stylist"].Id/clients/@client.Id">@client.Name</a></h4>
+            <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
           </li>
         }
       </ul>
