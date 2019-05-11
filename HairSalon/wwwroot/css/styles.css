@@ -9,3 +9,15 @@ body {
 li {
   margin-bottom: 5px;
 }
+
+button {
+  margin-right: 80px;
+  text-align: center;
+  /* align-content: center; */
+  /* align-self: center;
+  align-items: center; */
+}
+
+.text-center {
+  margin-top: 100px;
+}
