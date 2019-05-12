@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+@{
+  Layout = "_Layout";
+}
+
   <title>@Model["client"].Name</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
   <link rel='stylesheet' href='~/css/styles.css' type="text/css">
-</head>
-<body>
+
   <div class="container">
     <div class="jumbotron">
       <h1>Client: @Model["client"].Name</h1>
       <h2>Stooge: @Model["stylist"].Name</h2>
-
-      <div class="text-center">
-        <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stooge list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
-      </div>
+    </div>
+    
+    <div class="text-center">
+      <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stooge list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
     </div>
   </div>
-</body>
-</html>

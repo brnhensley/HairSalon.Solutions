@@ -1,35 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
-  <title>@Model["stylist"].Name's Clients</title>
-  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='~/css/styles.css' type="text/css">
-</head>
-<body>
-  <div class="container">
-    <div class="jumbotron">
-      <h1>@Model["stylist"].Name's clients:</h1>
-    </div>
-    @if (Model.Count == 0)
-    {
-      <p>No clients have been added yet!</p> // I can't figure out why this doesn't work
-    }
-    @if(Model.Count != 0)
-    {
-      <ul>
-        @foreach (var client in @Model["clients"])
-        {
-          <li>
-            <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
-          </li>
-        }
-      </ul>
-    }
+@{
+  Layout = "_Layout";
+}
 
-    <div class="text-center">
-      <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stylists list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
-    </div>
+<title>@Model["stylist"].Name's Clients</title>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>@Model["stylist"].Name's clients:</h1>
   </div>
-</body>
-</html>
+
+  @if (Model.Count == 0)
+  {
+    <p>No clients have been added yet!</p> // I can't figure out why this doesn't work
+  }
+
+  @if(Model.Count != 0)
+  {
+    <ul>
+      @foreach (var client in @Model["clients"])
+      {
+        <li>
+          <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
+        </li>
+      }
+    </ul>
+  }
+
+  <div class="text-center">
+    <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stylists list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
+  </div>
+</div>

@@ -2,22 +2,25 @@
   text-align: center;
 }
 
-body {
-  /* background-color: lightgrey; */
-}
-
 li {
   margin-bottom: 5px;
 }
 
 button {
-  margin-right: 80px;
+  margin-right: 40px;
+  margin-left: 40px;
   text-align: center;
-  /* align-content: center; */
-  /* align-self: center;
-  align-items: center; */
 }
 
 .text-center {
   margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+img.stylists {
+  float: right;
+}
+
+div.sidebar {
+  float: left;
 }

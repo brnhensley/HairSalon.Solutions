@@ -35,8 +35,8 @@ namespace HairSalon.Models
       {
         conn.Dispose();
       }
-
     }
+
     public static List<Stylist> GetAll()
     {
       List<Stylist> allStylists = new List<Stylist> {};

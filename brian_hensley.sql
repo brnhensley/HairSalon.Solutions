@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 10, 2019 at 11:53 PM
+-- Generation Time: May 12, 2019 at 03:17 AM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -42,7 +42,11 @@ INSERT INTO `clients` (`id`, `name`, `stylist_id`) VALUES
 (2, 'Jenny from the block', 4),
 (3, 'J-Roc', 1),
 (4, 'Godzilla', 6),
-(5, 'Sinbad', 9);
+(5, 'Sinbad', 9),
+(9, 'Stanky Pete', 1),
+(11, 'George Foreman', 9),
+(12, 'Scooby Doo', 6),
+(25, 'Beyonce', 4);
 
 -- --------------------------------------------------------
 
@@ -89,13 +93,13 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
-  <title>Add a new Stylist!</title>
-  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='~/css/styles.css' type="text/css">
-</head>
-<body>
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Welcome to the Three Stooges Hair Salon!</h1>
-    </div>
-    <a href='/stylists'><button class="btn btn-secondary">View stylists!</button></a>
-    <br><br>
-    <a href='/stylists/new'><button class="btn btn-secondary">Add a new stylist!</button></a>
-  </div>
-</body>
-</html>
+
+@{
+  Layout = "_Layout";
+}
+<title>Welcome to the Three Stooges Hair Salon!</title>
+
+<div class="jumbotron">
+  <h1>Welcome to the Three Stooges Hair Salon!</h1>
+</div>
+
+<div class="text-center">
+  <a href='/stylists'><button class="btn btn-secondary">View stylists!</button></a> <img src="~/img/smallstooges.jpg" alt="The original founders"> <a href='/stylists/new'><button class="btn btn-secondary">Add a new stylist!</button></a>
+  <br>
+
+</div>
