@@ -1,0 +1,32 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<title>Edit client</title>
+
+<div class="jumbotron">
+  <h1>Edit client: @Model["client"].Name!</h1>
+</div>
+
+<form action="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id" method="post">
+
+  <label for="newName">Name:</label>
+  <input type="text" name="newName" value="@Model["client"].Name">
+
+  <label for='newStylistId'>Select a stylist:</label>
+  <select id='newStylistId' name='newStylistId' type='text'>
+    @foreach (var stylist in @Model["allStylists"])
+    {
+      <option value='@stylist.Id'>@stylist.Name</option>
+    }
+  </select>
+
+  <button type="submit" class="btn btn-secondary">Edit</button>
+</form>
+
+<div class="text-center">
+  <a href="/clients"><button class="btn btn-secondary">View clients!</button></a><a href='/stylists'><button class="btn btn-secondary">View stylists!</button></a><a href='/'><button class="btn btn-secondary">Return home!</button></a>
+  <br>
+  <img src="~/img/smallstooges.jpg" alt="The original founders">
+</div>

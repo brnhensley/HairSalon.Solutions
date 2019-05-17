@@ -72,7 +72,7 @@ namespace HairSalon.Controllers
       model.Add("stylist", stylist);
       model.Add("client", client);
       return View("Show", model);
-}
+    }
 
   }
 }
