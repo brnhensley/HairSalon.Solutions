@@ -1,15 +1,27 @@
-// Needs fed a list of clients
+@{
+  Layout = "_Layout";
+}
 
-<h2>Clients:</h2>
+<title>Clients!</title>
+<div class="jumbotron">
+  <h1>All Clients:</h1>
+</div>
 
 @if (Model.Count != 0)
 {
   <ul>
     @foreach (var client in Model)
     {
-      <li><a href='/clients/@client.Id'>@client.Name</a></li>
+      <li><a href='/stylists/@client.StylistId/clients/@client.Id'>@client.Name</a></li>
     }
   </ul>
 }
 
-<h4><a href="/">Return home</a></h4>
+<h4></h4>
+
+
+<div class="text-center">
+  <a href='/stylists'><button class="btn btn-secondary">View stylists!</button></a> <a href="/"><button class="btn btn-secondary">Return homeAdd a new stylist!</button></a>
+  <br>
+
+</div>
