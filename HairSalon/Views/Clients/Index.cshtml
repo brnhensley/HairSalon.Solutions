@@ -12,7 +12,7 @@
   <ul>
     @foreach (var client in Model)
     {
-      <li><a href='/stylists/@client.StylistId/clients/@client.Id'>@client.Name</a></li>
+      <li><a href='/stylists/@client.StylistId/clients/@client.Id'><button class="btn btn-info">@client.Name</button></a></li>
     }
   </ul>
 }
@@ -21,7 +21,10 @@
 
 
 <div class="text-center">
-  <a href='/stylists'><button class="btn btn-secondary">View stylists!</button></a> <a href="/"><button class="btn btn-secondary">Return homeAdd a new stylist!</button></a>
-  <br>
+  <a href='/stylists'><button class="btn btn-secondary">View stylists!</button></a> <a href="/"><button class="btn btn-secondary">Return home!</button></a>
+  <br><br>
+  <form action="/clients/delete" method="post">
+    <button type="submit" class="btn btn-danger">Delete all clients!</button>
+  </form>
 
 </div>
