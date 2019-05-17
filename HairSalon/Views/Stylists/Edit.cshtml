@@ -3,25 +3,15 @@
   Layout = "_Layout";
 }
 
-<title>Edit client</title>
+<title>Edit stylist</title>
 
 <div class="jumbotron">
-  <h1>Edit client: @Model["client"].Name!</h1>
+  <h1>Edit stylist: @Model.Name!</h1>
 </div>
 
-<form action="/stylists/@Model["stylist"].Id/clients/@Model["client"].Id" method="post">
-
+<form action="/stylists/@Model.Id/" method="post">
   <label for="newName">Name:</label>
-  <input type="text" name="newName" value="@Model["client"].Name">
-
-  <label for='newStylistId'>Select a stylist:</label>
-  <select id='newStylistId' name='newStylistId' type='text'>
-    @foreach (var stylist in @Model["allStylists"])
-    {
-      <option value='@stylist.Id'>@stylist.Name</option>
-    }
-  </select>
-
+  <input type="text" name="newName" value="@Model.Name">
   <button type="submit" class="btn btn-secondary">Edit</button>
 </form>
 
