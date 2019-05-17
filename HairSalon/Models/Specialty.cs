@@ -101,11 +101,13 @@ namespace HairSalon.Models
       MySqlParameter stylist_id = new MySqlParameter();
       stylist_id.ParameterName = "@StylistId";
       stylist_id.Value = Id;
+      Console.WriteLine(stylist_id.Value);
       cmd.Parameters.Add(stylist_id);
 
       MySqlParameter specialty_id = new MySqlParameter();
       specialty_id.ParameterName = "@SpecialtyId";
       specialty_id.Value = newStylist.Id;
+      Console.WriteLine(specialty_id.Value);      
       cmd.Parameters.Add(specialty_id);
       cmd.ExecuteNonQuery();
 
@@ -152,6 +154,19 @@ namespace HairSalon.Models
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"DELETE FROM specialties;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public static void JoinTableClearAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = new MySqlCommand(@"DELETE FROM stylists_specialties;", conn);
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)

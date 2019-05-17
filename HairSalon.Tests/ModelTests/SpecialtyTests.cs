@@ -7,9 +7,9 @@ using System;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class StylistTest : IDisposable
+  public class SpecialtyTest : IDisposable
   {
-    public StylistTest()
+    public SpecialtyTest()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=brian_hensley_test;";
     }
@@ -19,6 +19,7 @@ namespace HairSalon.Tests
       Stylist.ClearAll();
       Client.ClearAll();
       Specialty.ClearAll();
+      // Specialty.JoinTableClearAll();
     }
 
     [TestMethod]
@@ -63,7 +64,6 @@ namespace HairSalon.Tests
     public void GetStylists_ReturnsEmptyStylistList_StylistList()
     {
       //Arrange
-      string name = "Work";
       Specialty newSpecialty = new Specialty("perm");
       List<Stylist> newList = new List<Stylist> { };
 
@@ -73,143 +73,89 @@ namespace HairSalon.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
+÷
+    // [TestMethod]
+    // public void AddStylist_AddsStylistToSpecialty_StylistList()
+    // {
+    //   //Arrange
+    //   Specialty testSpecialty = new Specialty("perm");
+    //   testSpecialty.Save();
+    //   Stylist testStylist = new Stylist("Larry");
+    //   testStylist.Save();
+    //   Stylist testStylist2 = new Stylist("Jim");
+    //   testStylist2.Save();
+    //
+    //   //Act
+    //   testSpecialty.AddStylist(testStylist);
+    //   testSpecialty.AddStylist(testStylist2);
+    //   List<Stylist> result = testSpecialty.GetStylists();
+    //   Console.WriteLine("one " + result.Count);
+    //   List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
+    //   Console.WriteLine("two " + result[0]);
+    //
+    //   //Assert
+    //   CollectionAssert.AreEqual(testList, result);
+    // }
+    //
+    // [TestMethod]
+    // public void GetStylists_RetrievesAllStylistsWithSpecialty_StylistList()
+    // {
+    //   //Arrange, Act
+    //   Specialty testSpecialty = new Specialty("perm");
+    //   testSpecialty.Save();
+    //   Stylist firstStylist = new Stylist("Larry");
+    //   firstStylist.Save();
+    //   Stylist secondStylist = new Stylist("barry");
+    //   secondStylist.Save();
+    //   testSpecialty.AddStylist(firstStylist);
+    //   testSpecialty.AddStylist(secondStylist);
+    //   List<Stylist> testStylistList = new List<Stylist> {firstStylist, secondStylist};
+    //   List<Stylist> resultStylistList = testSpecialty.GetStylists();
+    //
+    //   //Assert
+    //   CollectionAssert.AreEqual(testStylistList, resultStylistList);
+    // }
+    //
+    // // Tests that Stylists are not added by default
+    // [TestMethod]
+    // public void GetStylists_ReturnsAllSpecialtyStylists_StylistList()
+    // {
+    //   //Arrange
+    //   Specialty testSpecialty = new Specialty("perm");
+    //   testSpecialty.Save();
+    //   Stylist testStylist1 = new Stylist("Larry");
+    //   testStylist1.Save();
+    //   Stylist testStylist2 = new Stylist("Jim");
+    //   testStylist2.Save();
+    //
+    //   //Act
+    //   testSpecialty.AddStylist(testStylist1);
+    //   List<Stylist> savedStylists = testSpecialty.GetStylists();
+    //   List<Stylist> testList = new List<Stylist> {testStylist1};
+    //
+    //   //Assert
+    //   CollectionAssert.AreEqual(testList, savedStylists);
+    // }
 
-    [TestMethod]
-    public void GetAll_SpecialtiesEmptyAtFirst_List()
-    {
-      //Arrange, Act
-      int result = Specialty.GetAll().Count;
-
-      //Assert
-      Assert.AreEqual(0, result);
-    }
-
-    [TestMethod]
-    public void Equals_ReturnsTrueIfNamesAreTheSame_Specialty()
-    {
-      //Arrange, Act
-      Specialty firstSpecialty = new Specialty("perm");
-      Specialty secondSpecialty = new Specialty("perm");
-
-      //Assert
-      Assert.AreEqual(firstSpecialty, secondSpecialty);
-    }
-
-    [TestMethod]
-    public void Save_SavesSpecialtyToDatabase_SpecialtyList()
-    {
-      //Arrange
-      Specialty testSpecialty = new Specialty("perm");
-      testSpecialty.Save();
-
-      //Act
-      List<Specialty> result = Specialty.GetAll();
-      List<Specialty> testList = new List<Specialty>{testSpecialty};
-
-      //Assert
-      CollectionAssert.AreEqual(testList, result);
-    }
-
-    [TestMethod]
-    public void Save_DatabaseAssignsIdToSpecialty_Id()
-    {
-      //Arrange
-      Specialty testSpecialty = new Specialty("perm");
-      testSpecialty.Save();
-
-      //Act
-      Specialty savedSpecialty = Specialty.GetAll()[0];
-
-      int result = savedSpecialty.Id;
-      int testId = testSpecialty.Id;
-
-      //Assert
-      Assert.AreEqual(testId, result);
-    }
-
-    [TestMethod]
-    public void GetStylists_RetrievesAllStylistsWithSpecialty_StylistList()
-    {
-      //Arrange, Act
-      Specialty testSpecialty = new Specialty("perm");
-      testSpecialty.Save();
-      DateTime dob = new DateTime(1986, 12, 5);
-      Stylist firstStylist = new Stylist("Larry");
-      firstStylist.Save();
-      testSpecialty.AddStylist(firstStylist);
-      Stylist secondStylist = new Stylist("barry");
-      secondStylist.Save();
-      testSpecialty.AddStylist(secondStylist);
-      List<Stylist> testStylistList = new List<Stylist> {firstStylist, secondStylist};
-      List<Stylist> resultStylistList = testSpecialty.GetStylists();
-
-      //Assert
-      CollectionAssert.AreEqual(testStylistList, resultStylistList);
-    }
-
-    [TestMethod]
-    public void Delete_DeletesSpecialtyAssociationsFromDatabase_SpecialtyList()
-    {
-      //Arrange
-      DateTime dob = new DateTime(1986, 12, 5);
-      Stylist testStylist = new Stylist("Larry");
-      testStylist.Save();
-      Specialty testSpecialty = new Specialty("perm");
-      testSpecialty.Save();
-
-      //Act
-      testSpecialty.AddStylist(testStylist);
-      testSpecialty.Delete();
-      List<Specialty> resultStylistSpecialties = testStylist.GetAll();
-      List<Specialty> testStylistSpecialties = new List<Specialty> {};
-
-      //Assert
-      CollectionAssert.AreEqual(testStylistSpecialties, resultStylistSpecialties);
-    }
-
-    [TestMethod]
-    public void Test_AddStylist_AddsStylistToSpecialty()
-    {
-      //Arrange
-      DateTime dob = new DateTime(1986, 12, 5);
-      Specialty testSpecialty = new Specialty("perm");
-      testSpecialty.Save();
-      Stylist testStylist = new Stylist("Larry");
-      testStylist.Save();
-      Stylist testStylist2 = new Stylist("Jim");
-      testStylist2.Save();
-
-      //Act
-      testSpecialty.AddStylist(testStylist);
-      testSpecialty.AddStylist(testStylist2);
-      List<Stylist> result = testSpecialty.GetStylists();
-      List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
-
-      //Assert
-      CollectionAssert.AreEqual(testList, result);
-    }
-
-    [TestMethod]
-    public void GetStylists_ReturnsAllSpecialtyStylists_StylistList()
-    {
-      //Arrange
-      DateTime dob = new DateTime(1986, 12, 5);
-      Specialty testSpecialty = new Specialty("perm");
-      testSpecialty.Save();
-      Stylist testStylist1 = new Stylist("Larry");
-      testStylist1.Save();
-      Stylist testStylist2 = new Stylist("Jim");
-      testStylist2.Save();
-
-      //Act
-      testSpecialty.AddStylist(testStylist1);
-      List<Stylist> savedStylists = testSpecialty.GetStylists();
-      List<Stylist> testList = new List<Stylist> {testStylist1};
-
-      //Assert
-      CollectionAssert.AreEqual(testList, savedStylists);
-    }
-
+    // EDIT AND DELETE NOT NEEDED Yet
+    // [TestMethod]
+    // public void Delete_DeletesSpecialtyAssociationsFromDatabase_SpecialtyList()
+    // {
+    //   //Arrange
+    //   Stylist testStylist = new Stylist("Larry");
+    //   testStylist.Save();
+    //   Specialty testSpecialty = new Specialty("perm");
+    //   testSpecialty.Save();
+    //
+    //   //Act
+    //   testSpecialty.AddStylist(testStylist);
+    //   testSpecialty.Delete();
+    //   List<Specialty> resultStylistSpecialties = testStylist.GetAll();
+    //   List<Specialty> testStylistSpecialties = new List<Specialty> {};
+    //
+    //   //Assert
+    //   CollectionAssert.AreEqual(testStylistSpecialties, resultStylistSpecialties);
+    // }
 
 
   }
