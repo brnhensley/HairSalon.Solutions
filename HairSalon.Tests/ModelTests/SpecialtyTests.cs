@@ -19,7 +19,7 @@ namespace HairSalon.Tests
       Stylist.ClearAll();
       Client.ClearAll();
       Specialty.ClearAll();
-      // Specialty.JoinTableClearAll();
+      Specialty.JoinTableClearAll();
     }
 
     [TestMethod]
@@ -73,30 +73,83 @@ namespace HairSalon.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
-÷
-    // [TestMethod]
-    // public void AddStylist_AddsStylistToSpecialty_StylistList()
-    // {
-    //   //Arrange
-    //   Specialty testSpecialty = new Specialty("perm");
-    //   testSpecialty.Save();
-    //   Stylist testStylist = new Stylist("Larry");
-    //   testStylist.Save();
-    //   Stylist testStylist2 = new Stylist("Jim");
-    //   testStylist2.Save();
-    //
-    //   //Act
-    //   testSpecialty.AddStylist(testStylist);
-    //   testSpecialty.AddStylist(testStylist2);
-    //   List<Stylist> result = testSpecialty.GetStylists();
-    //   Console.WriteLine("one " + result.Count);
-    //   List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
-    //   Console.WriteLine("two " + result[0]);
-    //
-    //   //Assert
-    //   CollectionAssert.AreEqual(testList, result);
-    // }
-    //
+
+    [TestMethod]
+    public void GetAll_SpecialtiesEmptyAtFirst_List()
+    {
+      //Arrange, Act
+      int result = Specialty.GetAll().Count;
+
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
+    [TestMethod]
+    public void Equals_ReturnsTrueIfNamesAreTheSame_Specialty()
+    {
+      //Arrange, Act
+      Specialty firstSpecialty = new Specialty("perm");
+      Specialty secondSpecialty = new Specialty("perm");
+
+      //Assert
+      Assert.AreEqual(firstSpecialty, secondSpecialty);
+    }
+
+    [TestMethod]
+    public void Save_SavesSpecialtyToDatabase_SpecialtyList()
+    {
+      //Arrange
+      Specialty testSpecialty = new Specialty("perm");
+      testSpecialty.Save();
+
+      //Act
+      List<Specialty> result = Specialty.GetAll();
+      List<Specialty> testList = new List<Specialty>{testSpecialty};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToSpecialty_Id()
+    {
+      //Arrange
+      Specialty testSpecialty = new Specialty("perm");
+      testSpecialty.Save();
+
+      //Act
+      Specialty savedSpecialty = Specialty.GetAll()[0];
+
+      int result = savedSpecialty.Id;
+      int testId = testSpecialty.Id;
+
+      //Assert
+      Assert.AreEqual(testId, result);
+    }
+
+    [TestMethod]
+    public void AddStylist_AddsStylistToSpecialty_StylistList()
+    {
+      //Arrange
+      Specialty testSpecialty = new Specialty("perm");
+      testSpecialty.Save();
+      Stylist testStylist = new Stylist("Larry");
+      testStylist.Save();
+      Stylist testStylist2 = new Stylist("Jim");
+      testStylist2.Save();
+
+      //Act
+      testSpecialty.AddStylist(testStylist);
+      testSpecialty.AddStylist(testStylist2);
+      List<Stylist> result = testSpecialty.GetStylists();
+      Console.WriteLine("one " + result.Count);
+      List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
+      Console.WriteLine("two " + testList.Count);
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
     // [TestMethod]
     // public void GetStylists_RetrievesAllStylistsWithSpecialty_StylistList()
     // {
@@ -136,7 +189,7 @@ namespace HairSalon.Tests
     //   //Assert
     //   CollectionAssert.AreEqual(testList, savedStylists);
     // }
-
+    //
     // EDIT AND DELETE NOT NEEDED Yet
     // [TestMethod]
     // public void Delete_DeletesSpecialtyAssociationsFromDatabase_SpecialtyList()

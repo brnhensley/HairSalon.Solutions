@@ -107,7 +107,7 @@ namespace HairSalon.Models
       MySqlParameter specialty_id = new MySqlParameter();
       specialty_id.ParameterName = "@SpecialtyId";
       specialty_id.Value = newStylist.Id;
-      Console.WriteLine(specialty_id.Value);      
+      Console.WriteLine(specialty_id.Value);
       cmd.Parameters.Add(specialty_id);
       cmd.ExecuteNonQuery();
 
@@ -117,7 +117,6 @@ namespace HairSalon.Models
         conn.Dispose();
       }
     }
-
     public List<Stylist> GetStylists()
     {
       MySqlConnection conn = DB.Connection();
@@ -137,7 +136,7 @@ namespace HairSalon.Models
       {
         int stylistId = rdr.GetInt32(0);
         string stylistName = rdr.GetString(1);
-        Stylist newStylist = new Stylist(stylistName);
+        Stylist newStylist = new Stylist(stylistName, stylistId);
         stylists.Add(newStylist);
       }
       conn.Close();
@@ -147,6 +146,36 @@ namespace HairSalon.Models
       }
       return stylists;
     }
+
+    // public List<Stylist> GetStylists()
+    // {
+    //   MySqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+    //   cmd.CommandText = @"SELECT stylists.* FROM specialties
+    //   JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id)
+    //   JOIN stylists ON (stylists_specialties.stylist_id = stylists.id)
+    //   WHERE specialties.id = @SpecialtyId;";
+    //   MySqlParameter specialtyIdParameter = new MySqlParameter();
+    //   specialtyIdParameter.ParameterName = "@SpecialtyId";
+    //   specialtyIdParameter.Value = Id;
+    //   cmd.Parameters.Add(specialtyIdParameter);
+    //   MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+    //   List<Stylist> stylists = new List<Stylist>{};
+    //   while(rdr.Read())
+    //   {
+    //     int stylistId = rdr.GetInt32(0);
+    //     string stylistName = rdr.GetString(1);
+    //     Stylist newStylist = new Stylist(stylistName, stylistId);
+    //     stylists.Add(newStylist);
+    //   }
+    //   conn.Close();
+    //   if (conn != null)
+    //   {
+    //     conn.Dispose();
+    //   }
+    //   return stylists;
+    // }
 
     public static void ClearAll()
     {
