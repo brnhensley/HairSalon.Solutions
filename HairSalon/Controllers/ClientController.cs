@@ -45,8 +45,6 @@ namespace HairSalon.Controllers
     {
       Client client = Client.Find(clientId);
       Stylist stylist = Stylist.Find(stylistId);
-      Console.WriteLine("client" + client.Name);
-      Console.WriteLine("stylist" + client.Name);
       client.Delete();
       return View();
     }

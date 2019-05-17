@@ -28,5 +28,14 @@
 
   <div class="text-center">
     <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stylists list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
+
+    <br><br>
+
+    @* Delete form *@
+    <form action="/stylists/{stylistId}/delete" method="post">
+      <input id='stylistId' name='stylistId' type='hidden' value='@Model["stylist"].Id'>
+      <button type="submit" class="btn btn-danger">Delete stylist!</button>
+    </form>
+
   </div>
 </div>
