@@ -17,12 +17,21 @@
 
     <br><br>
 
-    @* Delete form *@
-    <form action="/stylists/{stylistId}/clients/{clientId}/delete" method="post">
-      <input id='stylistId' name='stylistId' type='hidden' value='@Model["stylist"].Id'>
-      <input id='clientId' name='clientId' type='hidden' value='@Model["client"].Id'>
-      <button type="submit" class="btn btn-danger">Delete client!</button>
-    </form>
+    @* Edit *@
+    <div class="row">
+      <div class="col-md-6">
+        <a href='/stylists/@Model["stylist"].Id/clients/@Model["client"].Id/edit'><button class="btn btn-secondary">Edit this client</button></a>
+      </div>
 
+      @* Delete form *@
+      <div class="col-md-6">
+        <form action="/stylists/{stylistId}/clients/{clientId}/delete" method="post">
+          <input id='stylistId' name='stylistId' type='hidden' value='@Model["stylist"].Id'>
+          <input id='clientId' name='clientId' type='hidden' value='@Model["client"].Id'>
+          <button type="submit" class="btn btn-danger">Delete client!</button>
+        </form>
+      </div>
+    </div>
   </div>
+
 </div>
