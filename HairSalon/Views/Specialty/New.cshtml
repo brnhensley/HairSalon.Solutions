@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+<title>Add a new Specialty!</title>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Add a new Specialty!</h1>
+  </div>
+
+  <form action="/specialties" method="post">
+    <label for="type">Name of specialty:</label>
+    <input id="type" name="type" type="text"><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="text-center">
+    <a href="/specialties"><button class="btn btn-secondary">Return to the specialties list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
+  </div>
+</div>

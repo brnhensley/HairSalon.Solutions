@@ -1,0 +1,32 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<title>@Model["specialty"].Type</title>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>@Model["specialty"].Type specialists:</h1>
+  </div>
+
+  @if (Model.Count == 0)
+  {
+    <p>No stylists have been added yet!</p> // I can't figure out why this doesn't work
+  }
+
+  @if(Model.Count != 0)
+  {
+    <ul>
+      @foreach (var stylist in @Model["specialtyStylists"])
+      {
+        <li>
+          <a href="/stylists/@stylist.Id"><button class="btn btn-info">@stylist.Name</button></a>
+        </li>
+      }
+    </ul>
+  }
+
+  <div class="text-center">
+    <a href="/specialties/@Model["specialty"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/specialties"><button class="btn btn-secondary">Return to the specialties list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
