@@ -18,6 +18,7 @@ namespace HairSalon.Tests
     {
       Stylist.ClearAll();
       Client.ClearAll();
+      Specialty.ClearAll();
     }
 
     [TestMethod]
