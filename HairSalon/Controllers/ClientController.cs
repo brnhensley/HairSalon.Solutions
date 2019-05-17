@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
 using System.Collections.Generic;
@@ -36,6 +37,17 @@ namespace HairSalon.Controllers
     public ActionResult DeleteAll()
     {
       Client.ClearAll();
+      return View();
+    }
+
+    [HttpPost("/stylists/{stylistId}/clients/{clientId}/delete")]
+    public ActionResult Delete(int stylistId, int clientId)
+    {
+      Client client = Client.Find(clientId);
+      Stylist stylist = Stylist.Find(stylistId);
+      Console.WriteLine("client" + client.Name);
+      Console.WriteLine("stylist" + client.Name);
+      client.Delete();
       return View();
     }
 

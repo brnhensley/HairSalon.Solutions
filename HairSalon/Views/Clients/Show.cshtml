@@ -2,17 +2,28 @@
   Layout = "_Layout";
 }
 
-  <title>@Model["client"].Name</title>
-  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='~/css/styles.css' type="text/css">
+<title>@Model["client"].Name</title>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+<link rel='stylesheet' href='~/css/styles.css' type="text/css">
 
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Client: @Model["client"].Name</h1>
-      <h2>Stooge: @Model["stylist"].Name</h2>
-    </div>
-    
-    <div class="text-center">
-      <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stooge list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
-    </div>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Client: @Model["client"].Name</h1>
+    <h2>Stooge: @Model["stylist"].Name</h2>
   </div>
+
+  <div class="text-center">
+    <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stooge list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
+
+
+    <br><br>
+
+    @* Delete form *@
+    <form action="/stylists/{stylistId}/clients/{clientId}/delete" method="post">
+      <input id='stylistId' name='stylistId' type='hidden' value='@Model["stylist"].Id'>
+      <input id='clientId' name='clientId' type='hidden' value='@Model["client"].Id'>
+      <button type="submit" class="btn btn-danger">Delete client!</button>
+    </form>
+
+  </div>
+</div>
