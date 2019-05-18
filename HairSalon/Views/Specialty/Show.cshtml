@@ -11,7 +11,7 @@
     <h1>@Model["specialty"].Type specialists:</h1>
   </div>
 
-  @if (Model.Count == 0)
+  @if(Model.Count == 0)
   {
     <p>No stylists have been added yet!</p> // I can't figure out why this doesn't work
   }
@@ -28,5 +28,18 @@
     </ul>
   }
 
+  <h4>Add a stylist to this specialty:</h4>
+
+<form action='/specialties/@Model["specialty"].Id/stylists/new' method='post'>
+  <label for='stylistId'>Select a stylist</label>
+  <select id='stylistId' name='stylistId' type='text'>
+    @foreach (var stylist in @Model["allStylists"])
+    {
+      <option value='@stylist.Id'>@stylist.Name</option>
+    }
+  </select>
+  <button type='submit'>Add</button>
+</form>
+
   <div class="text-center">
-    <a href="/specialties/@Model["specialty"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/specialties"><button class="btn btn-secondary">Return to the specialties list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
+  </a> <a href="/specialties"><button class="btn btn-secondary">Return to the specialties list</button></a> <a href="/stylists"><button class="btn btn-secondary">View stylists!</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>

@@ -131,8 +131,8 @@ namespace HairSalon.Models
       specialtyIdParameter.Value = this.Id;
       cmd.Parameters.Add(specialtyIdParameter);
 
-      int stylistId = 0;
-      string stylistName = "";
+      // int stylistId = 0;
+      // string stylistName = "";
 
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       List<Stylist> stylists = new List<Stylist>{};

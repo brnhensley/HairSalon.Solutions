@@ -24,3 +24,7 @@ img.stylists {
 div.sidebar {
   float: left;
 }
+
+ul {
+  list-style-type: none;
+}
