@@ -35,10 +35,23 @@ namespace HairSalon.Controllers
       Dictionary<string, object> model = new Dictionary<string, object>();
       Stylist selectedStylist = Stylist.Find(id);
       List<Client> stylistClients = selectedStylist.GetClients();
+      List<Specialty> allSpecialties = Specialty.GetAll();
       model.Add("stylist", selectedStylist);
       model.Add("clients", stylistClients);
+      model.Add("specialties", allSpecialties);
       return View(model);
     }
+
+    // New Specialty
+    [HttpPost("/stylists/{stylistId}/specialties/new")]
+    public ActionResult AddSpecialty(int stylistId, int specialtyId)
+    {
+      Specialty specialty = Specialty.Find(specialtyId);
+      Stylist stylist = Stylist.Find(stylistId);
+      stylist.AddSpecialty(specialty);
+      return RedirectToAction("Show",  new { id = stylistId });
+    }
+
     // New Clients
     [HttpPost("/stylists/{stylistId}/clients")]
     public ActionResult Create(int stylistId, string clientName)
@@ -68,7 +81,6 @@ namespace HairSalon.Controllers
       return View();
     }
 
-    // DON'T NEED THE DICTIONARY (USE ANYWAY?) JUST Stylist OBJECT
     [HttpGet("/stylists/{stylistId}/edit")]
     public ActionResult Edit(int stylistId)
     {

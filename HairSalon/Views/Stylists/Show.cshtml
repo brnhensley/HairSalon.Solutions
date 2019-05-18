@@ -2,30 +2,73 @@
   Layout = "_Layout";
 }
 
-<title>@Model["stylist"].Name's Clients</title>
+<title>@Model["stylist"].Name</title>
 
 <div class="container">
   <div class="jumbotron">
-    <h1>@Model["stylist"].Name's clients:</h1>
+    <h1>@Model["stylist"].Name</h1>
   </div>
 
-  @if (Model.Count == 0)
-  {
-    <p>No clients have been added yet!</p> // I can't figure out why this doesn't work
-  }
-
-  @if(Model.Count != 0)
-  {
-    <ul>
-      @foreach (var client in @Model["clients"])
+  <div class="row">
+    @* Clients List *@
+    <div class="col-md-4">
+      @if (Model["clients"].Count == 0)
       {
-        <li>
-          <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
-        </li>
+        <h3>No clients have been added yet!</h3>
       }
-    </ul>
-  }
 
+      @if(Model["clients"].Count != 0)
+      {
+        <h4>@Model["stylist"].Name's Clients:</h4>
+        <ul>
+          @foreach (var client in @Model["clients"])
+          {
+            <li>
+              <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    @* Specialties list *@
+    <div class="col-md-4">
+      @if (Model["clients"].Count == 0)
+      {
+        <h3>No clients have been added yet!</h3>
+      }
+
+      @if(Model["clients"].Count != 0)
+      {
+        <h4>@Model["stylist"].Name's Clients:</h4>
+        <ul>
+          @foreach (var client in @Model["clients"])
+          {
+            <li>
+              <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    @* Add Specialty *@
+    <div class="col-md-4">
+      <h4>Add a stylist to this specialty:</h4>
+      <form action='/stylists/@Model["stylist"].Id/specialties/new' method='post'>
+        <label for='specialtyId'>Select a specialty</label>
+        <select id='specialtyId' name='specialtyId' type='text'>
+          @foreach (var specialty in @Model["specialties"])
+          {
+            <option value='@specialty.Id'>@specialty.Type</option>
+          }
+        </select>
+        <button type='submit' class="btn btn-secondary">Add</button>
+      </form>
+    </div>
+  </div>
+
+  @* Nav Buttons *@
   <div class="text-center">
     <a href="/stylists/@Model["stylist"].Id/clients/new"><button class="btn btn-secondary">Add a new client</button></a> <a href="/stylists"><button class="btn btn-secondary">Return to the stylists list</button></a> <a href="/"><button class="btn btn-secondary">Return to the homepage</button></a>
 
