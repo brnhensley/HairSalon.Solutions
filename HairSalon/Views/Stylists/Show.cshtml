@@ -45,7 +45,7 @@
           @foreach (var specialty in @Model["stylistSpecialties"])
           {
             <li>
-              <a href="/stylists/@Model["stylist"].Id/specialties/@specialty.Id"><button class="btn btn-info">@specialty.Type</button></a>
+              <a href="/specialties/@specialty.Id"><button class="btn btn-info">@specialty.Type</button></a>
             </li>
           }
         </ul>

@@ -154,12 +154,12 @@ namespace HairSalon.Models
 
       MySqlParameter specialty_id = new MySqlParameter();
       specialty_id.ParameterName = "@SpecialtyId";
-      specialty_id.Value = Id;
+      specialty_id.Value = newSpecialty.Id;
       cmd.Parameters.Add(specialty_id);
 
       MySqlParameter stylist_id = new MySqlParameter();
       stylist_id.ParameterName = "@StylistId";
-      stylist_id.Value = newSpecialty.Id;
+      stylist_id.Value = Id;
       cmd.Parameters.Add(stylist_id);
       cmd.ExecuteNonQuery();
 

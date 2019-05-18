@@ -20,7 +20,7 @@
 
       @if(Model["specialtyStylists"].Count != 0)
       {
-        <h4>Stylists who specialize in @Model["specialty"].Type's</h4>
+        <h4>Stylists who specialize in @Model["specialty"].Type</h4>
         <ul>
           @foreach (var stylist in @Model["specialtyStylists"])
           {
