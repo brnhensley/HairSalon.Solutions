@@ -33,19 +33,19 @@
 
     @* Specialties list *@
     <div class="col-md-4">
-      @if (Model["clients"].Count == 0)
+      @if (Model["specialties"].Count == 0)
       {
-        <h3>No clients have been added yet!</h3>
+        <h3>No specialties have been added yet!</h3>
       }
 
-      @if(Model["clients"].Count != 0)
+      @if(Model["specialties"].Count != 0)
       {
-        <h4>@Model["stylist"].Name's Clients:</h4>
+        <h4>@Model["stylist"].Name's Specialties:</h4>
         <ul>
-          @foreach (var client in @Model["clients"])
+          @foreach (var specialty in @Model["stylistSpecialties"])
           {
             <li>
-              <a href="/stylists/@Model["stylist"].Id/clients/@client.Id"><button class="btn btn-info">@client.Name</button></a>
+              <a href="/stylists/@Model["stylist"].Id/specialties/@specialty.Id"><button class="btn btn-info">@specialty.Type</button></a>
             </li>
           }
         </ul>
@@ -67,6 +67,8 @@
       </form>
     </div>
   </div>
+
+  <hr>
 
   @* Nav Buttons *@
   <div class="text-center">
