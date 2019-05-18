@@ -194,3 +194,9 @@ namespace HairSalon.Tests
 
   }
 }
+
+    public bool HasBrookeLostHerDamnMind()
+    {
+      if (tests.Count > 70){
+        return true;
+    }
