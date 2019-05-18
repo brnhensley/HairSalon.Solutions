@@ -192,11 +192,66 @@ namespace HairSalon.Tests
       Assert.AreEqual(newName, editedName);
     }
 
+    [TestMethod]
+    public void AddSpecialty_AddsSpecialtyToStylist_SpecialtyList()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("perm");
+      testStylist.Save();
+      Specialty testSpecialty = new Specialty("Larry");
+      testSpecialty.Save();
+      Specialty testSpecialty2 = new Specialty("Jim");
+      testSpecialty2.Save();
+
+      //Act
+      testStylist.AddSpecialty(testSpecialty);
+      testStylist.AddSpecialty(testSpecialty2);
+      List<Specialty> result = testStylist.GetSpecialties();
+      List<Specialty> testList = new List<Specialty>{testSpecialty, testSpecialty2};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void GetSpecialties_RetrievesAllSpecialtiesWithStylist_SpecialtyList()
+    {
+      //Arrange, Act
+      Stylist testStylist = new Stylist("perm");
+      testStylist.Save();
+      Specialty firstSpecialty = new Specialty("Larry");
+      firstSpecialty.Save();
+      Specialty secondSpecialty = new Specialty("barry");
+      secondSpecialty.Save();
+      testStylist.AddSpecialty(firstSpecialty);
+      testStylist.AddSpecialty(secondSpecialty);
+      List<Specialty> testSpecialtyList = new List<Specialty> {firstSpecialty, secondSpecialty};
+      List<Specialty> resultSpecialtyList = testStylist.GetSpecialties();
+
+      //Assert
+      CollectionAssert.AreEqual(testSpecialtyList, resultSpecialtyList);
+    }
+
+    // Tests that Specialties are not added by default
+    [TestMethod]
+    public void GetSpecialties_ReturnsAllStylistSpecialties_SpecialtyList()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("perm");
+      testStylist.Save();
+      Specialty testSpecialty1 = new Specialty("Larry");
+      testSpecialty1.Save();
+      Specialty testSpecialty2 = new Specialty("Jim");
+      testSpecialty2.Save();
+
+      //Act
+      testStylist.AddSpecialty(testSpecialty1);
+      List<Specialty> savedSpecialties = testStylist.GetSpecialties();
+      List<Specialty> testList = new List<Specialty> {testSpecialty1};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, savedSpecialties);
+    }
+
   }
 }
-
-    public bool HasBrookeLostHerDamnMind()
-    {
-      if (tests.Count > 70){
-        return true;
-    }

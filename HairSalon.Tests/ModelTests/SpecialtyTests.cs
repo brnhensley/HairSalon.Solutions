@@ -142,9 +142,7 @@ namespace HairSalon.Tests
       testSpecialty.AddStylist(testStylist);
       testSpecialty.AddStylist(testStylist2);
       List<Stylist> result = testSpecialty.GetStylists();
-      Console.WriteLine("one " + result.Count);
       List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
-      Console.WriteLine("two " + testList.Count);
 
       //Assert
       CollectionAssert.AreEqual(testList, result);
