@@ -18,7 +18,14 @@
   <select id='newStylistId' name='newStylistId' type='text'>
     @foreach (var stylist in @Model["allStylists"])
     {
-      <option value='@stylist.Id'>@stylist.Name</option>
+      @if (stylist.Id == @Model["stylist"].Id)
+      {
+        <option selected="selected" value='@stylist.Id'>@stylist.Name</option>
+      }
+      else
+      {
+        <option value='@stylist.Id'>@stylist.Name</option>
+      }
     }
   </select>
 
