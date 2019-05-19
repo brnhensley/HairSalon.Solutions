@@ -1,8 +1,3 @@
-<!--
-Stylist = cuisine = category
-
-Client = restaurant = item
- -->
 # _Hair Salon_
 
 #### _A Hair Salon Web App, 5-10-19_
@@ -11,7 +6,7 @@ Client = restaurant = item
 
 ## _Description_
 
-This is a rad program that will allow a hair salon to add and view data about their stylists, and clients of those stylists; for maximum cool. 😎
+This is a rad program that will allow a hair salon to add and view data about their specialties, stylists, and clients of those stylists; for maximum cool. 😎
 
 ## _Setup/Installation Requirements_
 
@@ -36,6 +31,15 @@ This is a rad program that will allow a hair salon to add and view data about th
 |View a specific stylist|Click a stylist's name from a list|Page opens with that stylist's information and clients|
 |View a list of all a stylist's clients|Click a stylist's name|Page opens with a list of all clients|
 |View a specific client|Click a client's name from a list|Page opens with that client's information|
+|Delete a client|Click "Delete client"|Client removed from database|
+|Delete all clients|Click "Delete all clients"|All clients removed from database|
+|Delete a stylist|Click "Delete stylist"|Stylist removed from database|
+|Delete all stylists|Click "Delete all stylists"|All stylists removed from database|
+|Create a new specialty|"Wigs"|"Wigs" added to specialties database table|
+|Connect a specialty to a client|Select "Add Wigs to Larry"|"Larry" and "Wigs" added to the stylists_specialties join table|
+|Connect a client to a specialty|Select "Add Larry to Wigs"|"Larry" and "Wigs" added to the stylists_specialties join table|
+|View a list of all a stylist's specialties|Click a stylist's name|Page opens with a list of all specialties|
+|View a list of all a specialty's linked stylists|Click a specialty's name|Page opens with a list of all stylists associated|
 
 ## _Known Bugs_
 
